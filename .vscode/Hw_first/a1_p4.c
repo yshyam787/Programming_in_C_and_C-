@@ -16,4 +16,5 @@ int main(){
     double division = (double) x / (double) y; //converting variable of datatype int to double. 
     printf("division=%f\n", division);
     printf("remainder of division=%d\n", x%y);
+    return 0;
 }

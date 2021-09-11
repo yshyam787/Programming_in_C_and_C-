@@ -1,3 +1,9 @@
+/*
+CH-230-A
+a1 p1.[c]
+Shyam Yadav
+s.yadav@jacobs-university.de
+*/
 #include<stdio.h>
 int main(){
     int x = 17, y = 4;

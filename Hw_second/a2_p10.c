@@ -12,14 +12,7 @@ int main(){
     int i = 1;
     scanf("%d", &n);
     while(i<=n){
-        scanf("%d", &n);
-        if(n<=0){
-            printf("Please enter a positive and non-zero interger value:\n");
-            continue;          
-        }
-        else{
-            printf("%d day = %d hours\n", i, i*24);
-        }
+        printf("%d day = %d hours\n", i, i*24);
         i++;
     }
 

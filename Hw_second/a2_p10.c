@@ -10,10 +10,21 @@ int main(){
     int n;
     printf("Please enter a positive and non-zero integer value:\n");
     int i = 1;
+    int j=0;
     scanf("%d", &n);
-    while(i<=n){
-        printf("%d day = %d hours\n", i, i*24);
-        i++;
+
+    if(n<0){
+        while(j){
+            printf("Please enter a positive and non-zero integer value\n");
+            scanf("%d", &n);
+            j++;
+        }
+    }
+    if(n>0){
+        while(i<=n){
+            printf("%d day = %d hours\n", i, i*24);
+            i++;
+        }
     }
 
     return 0;

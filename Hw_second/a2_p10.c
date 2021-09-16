@@ -10,16 +10,18 @@ int main(){
     int n;
     printf("Please enter a positive and non-zero integer value:\n");
     int i = 1;
-    int j=0;
     scanf("%d", &n);
 
-    if(n<0){
-        while(j){
-            printf("Please enter a positive and non-zero integer value\n");
-            scanf("%d", &n);
-            j++;
-        }
+    /*Checking the initial condition to make sure that the entered number is a 
+    positive and non-zero integer.*/
+    while(n<0){
+        printf("Please enter a positive and non-zero integer value:\n");
+        int new_n;
+        scanf("%d", &new_n);
+        n = new_n;
+
     }
+
     if(n>0){
         while(i<=n){
             printf("%d day = %d hours\n", i, i*24);

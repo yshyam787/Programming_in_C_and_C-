@@ -10,13 +10,22 @@ s.yadav@jacobs-university.de
 int main(){
     char string[50];
     fgets(string, sizeof(string), stdin);
-    //ldfj lsdkjf lkjdsf ljsdf ljsf lsjdfljlsdfj lskjfl sjdfl lsdjfsl 
+    
+    //preventing from reading new lines. 
+    for (int i = 0; i <= strlen(string); i++){
+        if (string[i] == '\n'){
+            string[i] = '\0';
+        }
+    }
 
     //printing zigzag word.
     for (int i = 0; i < strlen(string); i++){
-        printf("%c\n", string[i]);
-        printf(" %c\n", string[i+1]);
-        i += 1;
+        if (i % 2 == 0){
+            printf("%c\n", string[i]);
+        }
+        else {
+            printf(" %c\n", string[i]);
+        }
     }
     return 0;
 }

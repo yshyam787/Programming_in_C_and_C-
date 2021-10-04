@@ -10,6 +10,7 @@ s.yadav@jacobs-university.de
 int main(){
     char string[50];
     fgets(string, sizeof(string), stdin);
+    //ldfj lsdkjf lkjdsf ljsdf ljsf lsjdfljlsdfj lskjfl sjdfl lsdjfsl 
 
     //printing zigzag word.
     for (int i = 0; i < strlen(string); i++){

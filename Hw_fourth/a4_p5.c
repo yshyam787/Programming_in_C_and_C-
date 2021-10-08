@@ -13,6 +13,7 @@ int count_consonants(char *str){
     int count = 0;
     //discarding vowels.
     for (int i = 0; str[i] != '\0'; ++i) {
+        //increasing the address arithmetic and getting the contained value. 
         if (*(str +i) == 'a' || *(str +i) == 'e' || *(str +i) == 'i' ||
             *(str +i) == 'o' || *(str +i) == 'u' || *(str +i) == 'A' ||
             *(str +i) == 'E' || *(str +i) == 'I' || *(str +i) == 'O' ||

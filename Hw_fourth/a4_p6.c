@@ -7,19 +7,23 @@ s.yadav@jacobs-university.de
 #include<stdio.h>
 #include<stdlib.h>
 
-//finding greatest values
+//finding two greatest values. 
 void grtst_val(int *array_ptr, int dim){
     int max1, max2;
     max1 = max2 = 0;
     for (int i = 0; i < dim; i++){
-        if (max1 < array_ptr[i]){
+        if (max1 <= array_ptr[i]){
+            //storing one value lesser. 
+            max2 = max1;
             max1 = array_ptr[i];
         }
-        else if ((array_ptr[i] < max2) && (max2 < max1)){
-            max2 = array_ptr[i];
-
-        }
     }
+    
+    // for (int i  = 0; i < dim; i++){
+    //     if ((max1 > array_ptr[i]) && (max2 < array_ptr[i])){
+    //         max2 = array_ptr[i];
+    //     }
+    // }
     printf("Max value = %d\n", max1);
     printf("Second max = %d\n", max2);
 }
@@ -41,6 +45,7 @@ int main(){
     }
 
     grtst_val(dynamic_array, n);
+    //freeing the dynamically allocated memory. 
     free(dynamic_array);
 
     return 0;

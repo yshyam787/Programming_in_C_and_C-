@@ -1,2 +1,2 @@
 
-    printf("Max value = %d\n", max1);
+    for (int  i = 0; i < n*n; i++){

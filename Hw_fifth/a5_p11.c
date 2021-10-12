@@ -19,16 +19,23 @@ int ifprime(long unsigned v, int globalchk){
             return 0;
         }
         else {
-            ifprime(v, globalchk - 1);
+            return ifprime(v, globalchk - 1);
         }
     }
 }
 
 int main(){
     long unsigned x;
+    int result;
     scanf("%lu", &x);
     globalchk = x / 2;
-    int result = ifprime(x, globalchk);
+    if (x == 1){
+        result  = 0;
+    }
+    else {
+        result = ifprime(x, globalchk);
+    }
+    
     if (result == 1){
         printf("%lu is prime\n", x);
     }

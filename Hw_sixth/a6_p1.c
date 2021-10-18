@@ -6,7 +6,7 @@ s.yadav@jacobs-university.de
 */
 
 #include<stdio.h>
-#define SWAP( x, y, datatype) {datatype temp = x; x = y; y = temp;}
+#define SWAP( x, y, datatype) {datatype temp = x ; x = y ; y = temp ;}
 int main() {
     int a, b;
     double c, d;
@@ -19,3 +19,4 @@ int main() {
 
     return 0;
 }
+

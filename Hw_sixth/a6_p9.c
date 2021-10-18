@@ -1,6 +1,6 @@
 /*
 CH-230-A
-a6 p8.[c]
+a6 p9.[c]
 Shyam Yadav
 s.yadav@jacobs-university.de
 */
@@ -14,6 +14,62 @@ struct list {
     struct list *next;
 };
 
+//Entering the element at the given position in the list.
+struct list *insertelem(struct list *mylist, int number, int position) {
+    //declaring a pointer for traversing.
+    struct list *ptr;
+    ptr = mylist;
+    int count;
+    while (ptr != NULL && count < position) {
+        ptr = ptr -> next;
+        count = count + 1;
+    }
+    if (position < 0 || position > count) {
+        printf("Invalid postion.\n");
+        return mylist;
+    }
+    else {
+        //new pointer for new element.
+        struct list *ptr2;
+        ptr2 = (struct list *) malloc (sizeof(struct list));
+        if (ptr2 == NULL) {
+            printf("Error in allocating memory.\n");
+            return mylist;
+        }
+        ptr = mylist;
+        //decrementing the value of position by 1. 
+        
+        //traversing through list.
+        for (int i = 0; i < (position - 1); i ++) {
+            ptr = ptr -> next;
+        }
+        ptr2 -> info  = number;
+        ptr2 -> next = ptr -> next;
+        ptr->next = ptr2;
+        return mylist;
+    }  
+}
+
+//reversing the elements of the list.
+struct list *reverse (struct list *mylist) {
+    //initializing pointer varialbe to zero.
+    struct list *prev = NULL;
+    //assigning the first element of list to a cursor pointer.
+    struct list *cursor = mylist;
+    //initializing ahead pointer variable to zero.
+    struct list *ahead = NULL;
+    while (cursor != NULL) {
+        //Storing next.
+        ahead = cursor -> next;
+        //reversing pointer of first elemnent of mylist to NULL.
+        cursor ->next = prev;
+        //moving pointers one position ahead.
+        prev = cursor;
+        cursor = ahead;
+    }
+    //returning the elements in a recursive way.
+    return prev;
+}
 //Adding element at the begining of the list.
 struct list * pushfront(struct list * mylist, int value) {
     struct list *newel;
@@ -82,7 +138,7 @@ void freeandquit(struct list *mylist) {
 
 int main() {
     char input;
-    int integer1, integer2;
+    int integer1, integer2, number, position;
     //initializing the list to the NULL.
     struct list* mylist = NULL;
     do {
@@ -104,6 +160,16 @@ int main() {
 
             case 'p':
                 print (mylist);
+                break;
+
+            case 'i':
+                scanf("%d", &number);
+                scanf("%d", &position);
+                mylist = insertelem (mylist, number, position);
+                break;
+
+            case 'R':
+                mylist = reverse (mylist);
                 break;
 
             case 'q':

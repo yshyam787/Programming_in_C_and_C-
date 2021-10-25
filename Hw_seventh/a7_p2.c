@@ -16,28 +16,57 @@ struct node {
     struct node* next;
 };
 
-//function for adding element to the empty list. 
-struct node* addtoempty (struct node* head, int data) {
-    struct node* temp;
-    temp = (struct node*) malloc (sizeof(struct node));
-    if (temp == NULL) {
-        printf("Error allocating memory.\n");
-    }
-    //real make of doubly linked list. 
-    temp -> prev = NULL;
-    temp -> data = data;
-    temp -> next = NULL;
+//function for removing the given character from the list.
+struct node* remove_elem (struct node* list, char ch) {
+    struct node* before = NULL;
+    struct node* after = NULL;
+    struct node *current = list;
+    int bool = 0;
+    while (current != NULL) {
+        if (current ->data == ch) {
+            bool = 1;
+            //checking at the front of the doubly linked list. 
+            if (current -> prev == NULL) {
+                current = current ->next;
+                current -> prev = NULL;
+                list = current;
+            }
 
-    head = temp; //changing head as doubly linked list.
-    return head; 
-} 
+            //checking at the end of the list.
+            else if (current -> next == NULL) {
+                current = current -> prev;
+                current -> next = NULL;
+            }
+            //checking in the middle of the list. 
+            else {
+                before = current -> prev; //storing link of previous elem.
+                after = current -> next; //storing link of next elem.
+                current = after; //linking the current list to next elem.
+                /*actual removing occurs here. current element linked to 
+                next element directly connects to the previous elements
+                leving behind current element. */
+                current -> prev = before; 
+                current = before;/*original previous elem. changes to current 
+                elem.*/
+                current -> next = after; //linking current elem. to next elem
+                //leaving the origingal current element.
+            }
+        }
+        current = current -> next;
+    }
+    if (bool == 0) {
+    printf("The element is not in the list.\n");
+    }
+    return list;
+}
 
 //function for adding elements at the beginning of the list. 
 struct node* addatbeg(struct node* head, int value) {
     struct node* temp;
     temp = (struct node*) malloc (sizeof(struct node));
     if (temp == NULL) {
-        printf("Error in allocating memory");
+        printf("Error in allocating memory\n");
+        return head;
     }
     
     temp -> prev = NULL;
@@ -45,81 +74,102 @@ struct node* addatbeg(struct node* head, int value) {
     temp -> next = NULL; //redundant
     temp -> next = head;
 
-    head -> prev = temp;
-    head = temp; //updating the head pointer since temp is the first node. 
-    return head;
+    if (head == NULL) {
+        return temp;
+    }
+    else {
+        head -> prev = temp; 
+        return temp;
+    }
 }
 
-//function for adding elements at the end of the list. 
-struct node* addatend(struct node* head, int data) {
-    struct node* temp;
-    struct node* tp;
-    temp = (struct node*) malloc (sizeof(struct node));
-    if (temp == NULL) {
-        printf("Error in allocating memory");
+//function for printing the list.
+void print(struct node* head) {
+    struct node* ptr;
+    if (head == NULL) {
+        printf("No element in the list.\n");
     }
-    
-    temp -> prev = NULL;
-    temp -> data = data;
-    temp -> next = NULL;
-
-    tp = head; //copying head to tp
-
-    //Here we traverse throught the list. this is where 
-    //we check the null position, and create a link.
-    while (tp -> next != NULL) {
-        tp = tp -> next; //linking
+    for (ptr = head; ptr != NULL; ptr = ptr -> next) {
+        printf("%c ", ptr -> data);
     }
-
-    //THIS IS WHERE THE DOUBLY LINKED LIST IS MADE. 
-    tp -> next = temp; //linking temp to head with the help of tp.
-    temp -> prev = tp; //linking head to temp in reverse way.
-    
-    return head;
+    printf("\n");
 }
 
-//function for adding the nodes and elements into the list. 
-struct node* create_list (struct node* head) {
-    int n, data;
-    printf("Enter the number of nodes needed: \n");
-    scanf("%d", &n);
-    if (n == 0) {
-        return head; 
+//function for printing the list backwards. 
+void reverseprint(struct node* head) {
+    struct node* before;
+    struct node* current;
+    current = head;
+    if (head == NULL) {
+        printf("No elements in the list.\n");
     }
-    //Adding elements to the head. 
-    printf("Please enter the number to be added: ");
-    scanf("%d", &data);
-    //calling a function to add data to the empty list and 
-    ///copying them to head. 
-    head = addtoempty(head, data);
+    //getting the last element of the list. 
+    while (current -> next != NULL) {
+        current = current -> next;
+    }
+    //actual reversing. 
+    for (before = current; before != NULL; before = before -> prev) {
+        printf("%c ", before -> data);
+    }
+    printf("\n");
+} 
 
-    //adding other data at the end of the head.
-    for (int i = 1; i < n; i++) {
-        printf("Enter the elements for the node %d: ", i + 1);
-        scanf("%d", &data);
-        head = addatbeg(head, data);
+//function for emptying the list, freeing memory, and quitting execution. 
+void em_free_quit(struct node* list) {
+    struct node* ptr;
+    if (list == NULL) {
+        printf("The element is not in the list!\n");
+        exit(1);
     }
-    return head;
+    while (list != NULL) {
+        //liking pointer to the next element of list. 
+        ptr = list -> next;
+        free (list);
+        //moving a step forward. 
+        list = ptr;
+    }
+    exit(1);
 }
 
 
 int main() {
+    int action;
+    char ch;
     //initializing the head to NULL.
     struct node* head = NULL;
-    struct node* ptr; //declaring pointer for the later use. 
-    //calling a function to create list and copying to null head. 
-    head = create_list (head);
+    
+    do {
+        scanf("%d", &action);
+        switch (action)
+        {
+        case 1:
+            getchar();
+            scanf("%c", &ch);
+            head = addatbeg(head, ch);
+            break;
 
-    ptr = head; //pointing to the first elem of head-list.
-    printf("Printing all the elements of the list:\n");
-    while (ptr != NULL) {
-        printf("%d ", ptr -> data);
-        //linking to the next element. 
-        ptr = ptr -> next;
-    }
-    printf("\n");
+        case 2:
+            getchar();
+            scanf("%c", &ch);
+            head = remove_elem(head, ch);
+            break;
 
-    free(head);
+        case 3:
+            print(head);
+            break;
+
+        case 4:
+            reverseprint(head);
+            break;
+
+        case 5:
+            em_free_quit(head);
+            break;
+            
+        default:
+            break;
+        }
+    } while (action != 5);
 
     return 0;
 }

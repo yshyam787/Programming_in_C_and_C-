@@ -65,7 +65,7 @@ struct list *reverse (struct list *mylist) {
         cursor ->next = prev;
         //moving pointers one position ahead.
         prev = cursor;
-        cursor = ahead;
+        cursor = ahead; //iterating over the next element of list. 
     }
     //returning the elements in a recursive way.
     return prev;

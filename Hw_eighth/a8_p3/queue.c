@@ -54,6 +54,18 @@ int enqueue(Item item, Queue *pq)
         return 0;
 }
 
+int printq(Queue pq) {
+    Node *ptr;
+    ptr = pq.front;
+    printf("content of the queue: ");
+    for (int i = 0; i < pq.items; i++) {
+        printf("%d ", ptr -> item); 
+        ptr = ptr -> next;
+    }
+    printf("\n");
+    return 0;
+}
+
 int dequeue(Item *pitem, Queue *pq)
 {
     Node *ptr;

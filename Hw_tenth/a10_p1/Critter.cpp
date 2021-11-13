@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Critter.h"
 
-//using namespace std;
+using namespace std;
 
 void Critter::setName(string& newname) {
 	name = newname;

@@ -1,11 +1,7 @@
 {
-	"folders": [
-		{
-			"path": "../Hw_ninth"
-		},
-		{
-			"path": "."
-		}
-	],
-	"settings": {}
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
 }

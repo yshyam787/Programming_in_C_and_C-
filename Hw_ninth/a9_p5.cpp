@@ -28,7 +28,11 @@ int main () {
     while (count < 10) {
         cout << "Please guess a number:" << endl;
         cin >> guess;
-        if (guess > die_number) {
+        if (guess != die_number && count == 9) {
+        cout << "Sorry! Your guess was not accurate." << endl;
+        exit(1);
+        }
+        else if (guess > die_number) {
             cout << "Your guess is too high!" << endl;
         }
         else if (guess < die_number) {
@@ -38,9 +42,6 @@ int main () {
             cout << "Contratulations " << name <<"! You won in "
             << count + 1 << " trials." << endl;
             exit(1);
-        }
-        else {
-            cout << "Sorry! Your guess was not accurate." << endl;
         }
         count++;
     }

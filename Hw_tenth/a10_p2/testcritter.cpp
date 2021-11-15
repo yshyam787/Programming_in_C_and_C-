@@ -6,7 +6,7 @@ s.yadav@jacobs-university.de
 */
 #include <iostream>
 #include <cstdlib>
-#include "Critter.cpp"
+#include "Critter.h"
 
 using namespace std;
 

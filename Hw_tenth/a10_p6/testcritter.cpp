@@ -1,13 +1,13 @@
 /*
 CH-230-A
-a10 p5.[c++]
+a10 p6.[c++]
 Shyam Yadav
 s.yadav@jacobs-university.de
 */
+
 #include "Crittter.h"
 #include <iostream>
 #include <cstdlib>
-#include <string>
 
 using namespace std;
 
@@ -28,9 +28,13 @@ int main(int argc, char** argv)
 	c3.setHunger(2);
     c3.print();
 
-    Critter c4 ("Purshotam", 9, 9);
+    Critter c4 ("Purshotam", 9, 1);
 	c4.setHunger(2);
     c4.print();
+
+    Critter c5 ("Nikesh", 9, 1, 5.6, 8);
+    c5.setHunger(2);
+    c5.print();
 
     return 0;
 }

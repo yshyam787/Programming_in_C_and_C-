@@ -1,4 +1,4 @@
-#include "Crittter.h"
+#include"Crittter.h"
 #include <iostream>
 
 using namespace std;
@@ -10,6 +10,7 @@ Critter::Critter()
     hunger = 0;
     boredom = 0;
     height = 5;
+    thirst = hunger;
 
 }
 
@@ -21,9 +22,10 @@ Critter::Critter(std::string newname)
     hunger = 0;
     boredom = 0;
     height = 5;
+    thirst = hunger;
 }
 
-Critter::Critter(std::string newname, int newhunger, int newboredom, 
+Critter::Critter(string newname, int newhunger, int newboredom, 
 double newheight)
 {
     cout << "Parametric constructor with default height 10 is being called."
@@ -34,12 +36,23 @@ double newheight)
     hunger = getdHunger(newhunger);
     boredom = newboredom;
     height = newheight;
+    thirst = hunger;
+}
+
+Critter:: Critter (string newname, int newhunger, int newboredom,
+double newheight, double newthirst)
+{
+    name = newname;
+    hunger = getdHunger(newhunger);
+    boredom = newboredom;
+    height = newheight;
+    thirst = newthirst;
 }
 
 void Critter::print() {
 	cout << "I am " << name << ". My hunger level is " << getiHunger() << 
     ". My boredom level is " << boredom << ". My height is "
-    << height << "." << endl;
+    << height << ". My thirst level is " << thirst << "." << endl;
 }
 
 void Critter::setName (string newname) {
@@ -60,6 +73,10 @@ void Critter::setHeight (double newheight) {
 	height = newheight;
 }
 
+void Critter::setThirst (double newthirst) {
+    thirst = newthirst;
+}
+
 string Critter::getName () {
 	return name;
 }
@@ -76,14 +93,19 @@ double Critter:: getHeight () {
     return height;
 }
 
+double Critter:: getThirst () {
+    return thirst;
+}
+
+
 
 //Converting integer hunger to double, and dividing by 10. 
 double Critter:: getdHunger(int hunger) {
-	return (double) hunger / 10;
+	return (double) hunger / 10.0;
 }
 
 //Converting previous double hungers to int and changing it into 
 //percentage by multiplying by 10. 
 int Critter::getiHunger() {
-	return hunger * 10;
+	return (hunger * 10);
 }

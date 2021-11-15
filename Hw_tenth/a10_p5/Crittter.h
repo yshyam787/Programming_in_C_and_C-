@@ -31,7 +31,7 @@ public: // business logic methods are public
 	std::string getName();
 	int getHunger();
 	int getBoredom ();
-	int setHeight();
+	double getHeight();
 
 	//for getting double hunger as declared above and coverting
 	//it into int easily.

@@ -1,4 +1,10 @@
 
+/*
+CH-230-A
+a11_p6.cpp
+Krishna Gautam
+kgautam@jacobs-university.de
+*/
 #include <iostream>
 #include <cmath>
 #include "Vector.h"

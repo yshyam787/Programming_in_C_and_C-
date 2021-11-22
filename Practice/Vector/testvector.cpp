@@ -1,5 +1,11 @@
 
-#include "Vector.cpp"
+/*
+CH-230-A
+a11_p6.cpp
+Krishna Gautam
+kgautam@jacobs-university.de
+*/
+#include "Vector.h"
 #include <iostream>
 
 using namespace std;
@@ -22,7 +28,7 @@ int main () {
     for (int i = 0; i < n; i++) {
         cin >> v2[i];
     }
- 
+
     Vector Vector1;
 
     cout << "V1 is:" << endl;

@@ -21,13 +21,14 @@ Box:: Box (double newheight, double newwidth, double newdepth) {
     height = newheight;
     width = newwidth;
     depth = newdepth;
+    cout << "Parametric constructor is being called." << endl;
 }
 
 Box:: Box (const Box& b) {
-    cout << "Copy constructor is being called." << endl;
     height = b.height;
     width = b.width;
     depth = b.depth;
+    cout << "Copy constructor is being called." << endl;
 }
 
 Box:: ~Box () {
@@ -54,11 +55,11 @@ double Box:: getDepth () {
     return depth;
 }
 
-double Box::volume () {
+double Box::volume () { 
     return height * width * depth;
 }
 
 void Box:: print() {
-    cout << "Volume: " << volume << endl;
+    cout << "Volume: " << volume () << endl;
 }
 

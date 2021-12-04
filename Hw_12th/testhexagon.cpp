@@ -5,27 +5,28 @@ Shyam Yadav
 s.yadav@jacobs-university.de
 */
 #include <iostream>
-#include "Shapes.h"
+#include "Shapes.cpp"
 
 int main(int argc, char** argv) {
     Circle c("First Circle", 3, 4, 7.0);
     RegularPolygon r("TRIANGLE", 1, 1, 3);
-    Rectangle rect("First rectangle", 1, 2, 2, 2);
-    Square sq("First Square", 1, 2, 4);
+    Hexagon b_hexa("First hexagon", 1, 2, 9, "blue");
+    Hexagon g_hexa("Second hexagon", 1, 2, 15, "green");
+    Hexagon copyhexa(g_hexa);
 
-    r.printName();
     c.printName();
-    rect.printName();
-    sq.printName();
+    r.printName();
+    b_hexa.printName();
+    g_hexa.printName();
     
-    cout << "\nCircle perimeter: " << c.c_perimeter() << endl;
-    cout << "Circle area: " << c.c_area() << endl;
     
-    cout << "\nRectangle perimeter: " << rect.rect_perimeter() << endl;
-    cout << "Rectangle area: " << rect.rect_area() << endl;
+    cout << "\nBlue Hexagon Perimeter: " << b_hexa.hex_perimeter() << endl;
+    cout << "Blue hexagon Area: " << b_hexa.hex_area() << endl;
 
-    cout << "\nSquare perimeter: " << sq.sq_perimeter() << endl;
-    cout << "Square area: " << sq.sq_area() << endl;
+    cout << "\nGreen Hexagon Perimeter: " << g_hexa.hex_perimeter() << endl;
+    cout << "Green hexagon Area: " << g_hexa.hex_area() << endl;
 
+    cout << "\nCopy Hexagon Perimeter: " << copyhexa.hex_perimeter() << endl;
+    cout << "Copy hexagon Area: " << copyhexa.hex_area() << endl;
     return 0;
 }

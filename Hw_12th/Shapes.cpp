@@ -10,6 +10,7 @@ s.yadav@jacobs-university.de
 
 #include <iostream>
 #include "Shapes.h"
+#include <cmath>
 
 using namespace std; 
 
@@ -17,7 +18,7 @@ Shape::Shape(const string& n) : name(n) {
     cout << "Deafault constructor is being called." << endl;
 }
 
-Shape:: Shape () : name ("default") {
+Shape:: Shape () {
 }
 
 Shape:: Shape (const Shape& s) {
@@ -89,85 +90,46 @@ int RegularPolygon:: getEdgenumber () {
 }
 
 /******************************************/
-Rectangle:: Rectangle (const string& n, double nx, double ny, double nwidth,
-	double nheight) : RegularPolygon (n, nx, ny, 4)
+Hexagon:: Hexagon (const string& n, double nx, double ny, double nside,
+	string ncolor) : RegularPolygon (n, nx, ny, 4)
 {	
-	width = nwidth;
-	height = nheight;
-}
-
-Rectangle:: Rectangle() {
-	width = 0;
-	height = 0;
-}
-
-Rectangle:: Rectangle (const Rectangle& r) {
-	width = r.width;
-	height = r.height;
-}
-
-void Rectangle:: setWidth (double newwidth) {
-	width = newwidth;
-}
-
-void Rectangle:: setHeight (double newheight) {
-	height = newheight;
-}
-
-double Rectangle:: getWidth () {
-	return width;
-}
-
-double Rectangle:: getHeight () {
-	return height;
-}
-
-double Rectangle:: rect_perimeter () {
-	return 2 * (width + height);
-}
-
-double Rectangle:: rect_area () {
-	return width * height;
-}
-
-/**********************************************/
-Square::Square (const string& s, double nx, double ny, 
-	double nside) : Rectangle(s, nx, ny, nside, nside)
-{
 	side = nside;
+	color = ncolor;
 }
 
-Square::Square()
-{
+Hexagon:: Hexagon() {
 	side = 0;
+	color = "blue";
 }
 
-Square:: Square (const Square& s) 
-{
-	side = s.side;
+Hexagon:: Hexagon (const Hexagon& h) {
+	side = h.side;
+	color = h.color;
 }
 
-double Square:: sq_perimeter ()
-{
-	return 4 * side;
-}
-
-double Square:: sq_area () 
-{
-	return side * side;
-}
-
-void Square:: setSide (double newside) 
-{
+void Hexagon:: setSide (double newside) {
 	side = newside;
 }
 
-double Square:: getSide () 
-{
+void Hexagon:: setColor (string newcolor) {
+	color = newcolor;
+}
+
+double Hexagon:: getSide () {
 	return side;
 }
 
+string Hexagon:: getColor () {
+	return color;
+}
 
+double Hexagon:: hex_perimeter () {
+	return 6 * side;
+}
+
+double Hexagon:: hex_area () {
+	return (3/2) * sqrt(3) * pow(side, 2);
+}
 
 /**********************************************/
 

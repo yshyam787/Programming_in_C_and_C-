@@ -60,40 +60,24 @@ class RegularPolygon : public CenteredShape {
 		int getEdgenumber();
 };
 
-class Rectangle : public RegularPolygon {
+class Hexagon : public RegularPolygon {
     private:
-        double width;
-        double height;
+        double side;
+        string color;
     
     public:
-        Rectangle (const string&, double,
-		double, double, double);
-		Rectangle();
-        Rectangle (const Rectangle&);
+        Hexagon (const string&, double,
+		double, double, string);
+		Hexagon();
+        Hexagon (const Hexagon&);
         
-        double rect_perimeter();
-        double rect_area ();
+        double hex_perimeter();
+        double hex_area ();
 
-        void setWidth (double newwidth);
-		void setHeight (double newheight);
-		double getWidth (); 
-		double getHeight ();
-};
-
-class Square: public Rectangle {
-	private:
-		double side;
-	
-	public:
-		Square (const string&, double, double, double);
-		Square ();
-		Square (const Square&);
-
-		double sq_perimeter ();
-		double sq_area ();
-
-		void setSide (double newside);
-		double getSide ();
+        void setSide (double newside);
+		void setColor (string newcolor);
+		double getSide (); 
+		string getColor ();
 };
 
 // a Circle is a shape with a center and a radius

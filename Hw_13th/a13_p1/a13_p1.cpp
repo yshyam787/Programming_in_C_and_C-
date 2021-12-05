@@ -28,6 +28,10 @@ int main () {
 
     //inserting copied at the '.' position. 
     ofstream outputfile (filename.insert(position, "_copied"));
+    if (!outputfile.good()) {
+        cerr << ("Error opening output file.") << endl;
+        exit(2);
+    }
 
     string line;
     while (inputfile.good()) {

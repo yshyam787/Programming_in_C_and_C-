@@ -39,5 +39,8 @@ class Complex {
         friend ostream& operator << (ostream& output, const Complex&);
 
         Complex operator +(const Complex&);
+        Complex operator -(const Complex&);
+        Complex operator *(const Complex&);
+        Complex operator =(const Complex&);
 
 };

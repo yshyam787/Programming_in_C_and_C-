@@ -105,11 +105,28 @@ istream& operator >> (istream& input, Complex& c) {
 
 ostream& operator << (ostream& output, const Complex& c) {
     output << (noshowpos) << c.real << (showpos) << c.imaginary << 
-    'i' << endl;
+    'i';
     return output;
 }
 
 Complex Complex:: operator +(const Complex& a) { 
     Complex addn(this->real + a.real, this-> imaginary + a.imaginary);
     return addn;
+}
+
+Complex Complex:: operator -(const Complex& s) {
+    Complex subtr(this-> real - s.real, this-> imaginary - s.imaginary);
+    return subtr;
+}
+
+Complex Complex:: operator *(const Complex& p) {
+    Complex prod (real * p.real - imaginary * p.imaginary,
+    real * p.imaginary + imaginary * p.real);
+    return prod;
+}
+
+Complex Complex:: operator =(const Complex& equal) {
+    real = equal.real;
+    imaginary = equal.imaginary;
+    return *this;
 }

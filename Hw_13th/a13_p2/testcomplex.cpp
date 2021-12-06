@@ -78,16 +78,24 @@ int main () {
         inputfile2 >> c2;
     }
 
-    Complex sum  = c1 + c2;
-
     ofstream outputfile("output.txt");
     if (!outputfile.good()) {
         cerr << "Error opening the output file!" << endl;
         exit(3);
     }
 
+    Complex sum  = c1 + c2;
+    Complex diff = c1 - c2;
+    Complex scalar_prod = c1 * c2;
+
     cout << "\nWriting sum  into the output file..." << endl;
     outputfile << sum << endl;
+    cout << "Writing difference to the output file..." << endl;
+    outputfile << diff << endl;
+    cout << "Writing product to the output file....." << endl;
+    outputfile << scalar_prod << endl;
+    cout <<"Everything has been saved to the output file....."
+    << endl;
 
     inputfile1.close();
     inputfile2.close();

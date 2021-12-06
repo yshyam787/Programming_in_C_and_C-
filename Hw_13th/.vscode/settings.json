@@ -4,6 +4,7 @@
         "fstream": "cpp",
         "ostream": "cpp",
         "ios": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "string": "c"
     }
 }

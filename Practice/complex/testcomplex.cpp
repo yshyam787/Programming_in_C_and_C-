@@ -7,7 +7,7 @@ kgautam@jacobs-university.de
 
 
 #include <iostream>
-#include "Complex.cpp"
+#include "Complex.h"
 #include <fstream>
 
 using namespace std;
